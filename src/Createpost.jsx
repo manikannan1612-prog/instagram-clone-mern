@@ -6,7 +6,7 @@ function Createpost() {
                    name='profile_pic'
                    value={profile.user.profile_pic}
                    className='form-conrol w-100 my-4'
-                   onChange={Hanndlepost}
+                   onChange={handlepost}
                    
             />
             <button className='btn btn-primary my-4'

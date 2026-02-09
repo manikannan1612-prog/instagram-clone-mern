@@ -3,20 +3,22 @@ import { useParams,Link, useNavigate} from 'react-router-dom'
 
 function ViewStory() {
 
-    const {id ,tot}=useParams();
+    const {id }=useParams();
 
-    const [story,setStory]=useState(null);
+    const [story,setStory]=useState([]);
 
     const navigate=useNavigate();
 
+    
     useEffect(()=>{
-        fetch(`http://localhost:3000/story/${id}`)
+        fetch(`http://localhost:8000/stories`)
         .then(data=>data.json())
         .then(data=>setStory(data))
         .catch(err=>console.log(err))
     },[id]);
+    const currentStory = story[Number(id)];
 
-    if(id > tot ||id<=0 ){
+    if(Number(id)>=story.length||Number(id)<0){
 
         navigate('/');
 
@@ -24,10 +26,10 @@ function ViewStory() {
   return (
     <div>   
 
-        {story?<div className='d-flex justify-content-center align-items-center'>
-            <Link to={`http://localhost:5173/story/${Number(id)-1}/${tot}`}> <i className="bi bi-arrow-left-circle-fill"></i>   </Link>
-            <img className='vh-100' src={story.image} alt="" />
-            <Link to={`http://localhost:5173/story/${Number(id)+1}/${tot}`}> <i className="bi bi-arrow-right-circle-fill icon"></i>  </Link>
+        {currentStory?<div className='d-flex justify-content-center align-items-center'>
+            <Link to={`http://localhost:5173/story/${Number(id)-1}`}> <i className="bi bi-arrow-left-circle-fill"></i>   </Link>
+            <img className='vh-100' src={currentStory.image} alt="" />
+            <Link to={`http://localhost:5173/story/${Number(id)+1}`}> <i className="bi bi-arrow-right-circle-fill icon"></i>  </Link>
         </div> : <div>loading </div>}
     </div>
     

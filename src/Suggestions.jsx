@@ -7,12 +7,12 @@ function Suggestions() {
   const [suggestions,setSuggestions]=useState([]);
 
 useEffect(()=>{
-  fetch('http://localhost:3000/profile')
+  fetch('http://localhost:8000/profile')
   .then(data=>data.json())
   .then(data=>setProfile(data))
   .catch(err=>console.log(err))
 
-  fetch('http://localhost:3000/suggestions')
+  fetch('http://localhost:8000/suggestions')
   .then(data=>data.json())
   .then(data=>setSuggestions(data))
   .catch(err=>console.log(err))
@@ -20,8 +20,8 @@ useEffect(()=>{
 
   },[]);
 
-  const handleFollow=async (id,username)=>{
-    axios.post('http://localhost:3000/followers',{"id":id,"username":username})
+  const handleFollow=async (id,username,profile_pic)=>{
+    axios.post('http://localhost:8000/followers',{"_id":id,"username":username,"profile_pic":profile_pic})
     .then(alert('followed'))
     .catch(err=>console.log(err))
   }
@@ -30,7 +30,7 @@ useEffect(()=>{
     <div>
       <div className='w-75'>
       {profile ? 
-       <div className= ' my-3'key={profile.id}>
+       <div className= ' my-3'key={profile._id}>
                 <div className='d-flex'>
                 <img className = "dp3 rounded-circle" src= {profile.user.profile_pic} alt='profile'/>
                 <h5 className='profs'>{profile.user.username}</h5>
@@ -47,11 +47,11 @@ useEffect(()=>{
         <div>
           {
             suggestions.map((suggestion)=>(
-              <div key={suggestion.id}>
+              <div key={suggestion._id}>
                 <div className='suggestions d-flex'>
                 <img className = "dp3 rounded-circle" src={suggestion.profile_pic}/>
                 <h5 className='prof1 '>{suggestion.username}</h5>
-                <a className='ms-auto text-primary'onClick={()=>handleFollow(suggestion.id,suggestion.username)}>Follow</a>
+                <a className='ms-auto text-primary'onClick={()=>handleFollow(suggestion._id,suggestion.username,suggestion.profile_pic)}>Follow</a>
                 </div>
                 
         

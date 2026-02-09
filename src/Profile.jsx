@@ -12,11 +12,11 @@ function Profile() {
 
 
     useEffect(()=>{
-        axios.get('http://localhost:3000/profile')
+        axios.get('http://localhost:8000/profile')
         .then(data=>setProfile(data.data))
 
 
-        axios.get('http://localhost:3000/followers')
+        axios.get('http://localhost:8000/followers')
     .then(data=>setFollowers(data.data))
     .catch(err=>console.log(err))
 
@@ -34,13 +34,13 @@ function Profile() {
         }))
      }
      const handleUpdate=async ()=>{
-        axios.put('http://localhost:3000/profile',profile)
-        .then(console.log("updated"))
+        axios.put('http://localhost:8000/profile',profile)
+        .then(alert("updated"))
         .catch(err=>console.log(err))
      }
 
-     const handleUnfollow=async (id)=>{
-        axios.delete(`http://localhost:3000/followers/${id}`)
+     const handleUnfollow=async (_id)=>{
+        axios.delete(`http://localhost:8000/followers/${_id}`)
         .then(alert("unfollowed"))
         .then(setUnfollowed(!unfollowed))
         .catch(err=>console.log(err))
@@ -89,9 +89,9 @@ function Profile() {
 
   {followers.length>0?(
     followers.map(follower=>(
-        <div className='d-flex my-3' key={follower.id}>
+        <div className='d-flex my-3' key={follower._id}>
             {follower.username}
-            <button className='btn btn-secondary ms-auto' onClick={()=>handleUnfollow(follower.id)}> Un follow</button>
+            <button className='btn btn-secondary ms-auto' onClick={()=>handleUnfollow(follower._id)}> Un follow</button>
 
         </div>
     ))

@@ -20,7 +20,7 @@ function Newpost() {
     };
 
 
-    axios.post('http://localhost:3000/posts',finalData)
+    axios.post('http://localhost:8000/posts',finalData)
         .then(data=>setPostings(data.data))
         .catch(err=>console.log(err))
     

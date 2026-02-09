@@ -6,60 +6,42 @@ import { Navigate, useNavigate } from 'react-router-dom'
 
 function Myposts() {
     const [myposts, setMyposts] = useState(null)
-    const Navigate=useNavigate();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get('http://localhost:3000/mypost')
-            .then(data => setMyposts(data.data))
+        axios.get('http://localhost:8000/posts')
+            .then(res => setMyposts(res.data))
             .catch(err => console.log(err))
     }, [])
 
     return (
-        <div className="insta-app">
-            {myposts ? (
-                myposts.map((mypost) =>
-                    <div key={mypost.id} className="profile-container">
-                        
-                        <h1 className="header-hidden">myprofile</h1>
-                        <img className='profile-avatar d-flex' src={mypost.profile_pic} alt="" />
-                        
-                        <h1 className="header-hidden">myposts</h1>
-                        <img className="post-preview-hidden" src={mypost.mypostdet[0].imageUrl} alt="image" />
-                        <h6 className="caption-hidden">{mypost.mypostdet[0].caption}</h6>
-                        
-                        <div className="card-center-wrapper">
-                            <div className="card insta-card" style={{ width: "18rem" }}>
-                                
-                                <div className="card-header-custom">
-                                    <img className="tiny-avatar" src={mypost.profile_pic} alt="user" />
-                                    <span className="username-text">{mypost.username}</span>
+        <div className="container">
+                <div className="row justify-content-center">
+                <div className="col-md-6"> 
+                    {myposts ? (
+                        myposts.filter(mypost => mypost.user?.username === "manikannan").map(mypost => (
+                            <div key={mypost._id} className="card my-4 shadow-sm">
+                                <div className="p-3 d-flex align-items-center">
+                                    <img src={mypost.user?.profile_pic} className="rounded-circle" width="40" height="40" />
+                                    <b className="ms-2">{mypost.user?.username}</b>
                                 </div>
 
-                                <img
-                                    src={mypost.mypostdet[0].imageUrl}
-                                    className="card-img-top"
-                                    alt="post"
-                                />
+                                <img src={mypost.image} className="w-100" style={{maxHeight: "500px", objectFit: "cover"}} />
 
-                                <div className="card-body">
-                                    <div className="action-icons">
-                                        <span>♡</span> <span>💬</span> <span>➢</span>
-                                    </div>
-                                    <h5 className="card-title hidden-title">{mypost.username}</h5>
-                                    <p className="card-text">
-                                         {mypost.mypostdet[0].caption}
-                                    </p>
-                                    <a href="#" className="btn btn-primary insta-btn" onClick={()=>{Navigate('/newposts')}}>Add New Post</a>
+                                <div className="p-3">
+                                    <p> {mypost.caption}</p>
+                                    <button className="btn btn-primary w-100" onClick={() => navigate('/newposts')}>
+                                        Add New Post
+                                    </button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                )
-            ) : (
-                <div className="loading-text">loading myposts</div>
-            )}
+                        ))
+                    ) : (
+                        <p className="text-center mt-5">Loading...</p>
+                    )}
+                </div>
+            </div>
         </div>
     )
 }
-
 export default Myposts

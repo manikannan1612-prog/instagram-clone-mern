@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
+
 function Sidebar() {
   const navigate=useNavigate();
   return (
@@ -8,7 +9,8 @@ function Sidebar() {
     <div className='position-fixed'>
     <div className='d-flex flex-column gap-3 m-3'>
         <div ><img className= "logotext" src="src\assets\instagramlogonew1.png" alt="instagram" /></div>
-    <div> <i className="bi bi-house-door"></i>Home</div>
+    <div onClick={()=>{ window.location.href = '/' }} 
+  style={{ cursor: 'pointer' }}> <i className="bi bi-house-door"></i>Home</div>
     <div><i className="bi bi-search"></i>Search</div>
     <a href="https://www.instagram.com/https:/explore/" 
    target="_blank" 

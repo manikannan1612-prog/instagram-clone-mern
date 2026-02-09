@@ -6,7 +6,7 @@ function Messages() {
     const [messages ,setMessages] =useState([]);
 
 useEffect(()=>{
-    axios.get('http://localhost:3000/messages')
+    axios.get('http://localhost:8000/messages')
     .then(data=>setMessages(data.data))
     .catch(err=>console.log(err))
 },[])
