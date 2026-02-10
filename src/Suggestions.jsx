@@ -7,12 +7,12 @@ function Suggestions() {
   const [suggestions,setSuggestions]=useState([]);
 
 useEffect(()=>{
-  fetch('https://instagram-clone-mern-chi.vercel.app/profile')
+  fetch('/profile')
   .then(data=>data.json())
   .then(data=>setProfile(data))
   .catch(err=>console.log(err))
 
-  fetch('https://instagram-clone-mern-chi.vercel.app/suggestions')
+  fetch('/suggestions')
   .then(data=>data.json())
   .then(data=>setSuggestions(data))
   .catch(err=>console.log(err))
@@ -21,7 +21,7 @@ useEffect(()=>{
   },[]);
 
   const handleFollow=async (id,username,profile_pic)=>{
-    axios.post('https://instagram-clone-mern-chi.vercel.app/followers',{"_id":id,"username":username,"profile_pic":profile_pic})
+    axios.post('/followers',{"_id":id,"username":username,"profile_pic":profile_pic})
     .then(alert('followed'))
     .catch(err=>console.log(err))
   }

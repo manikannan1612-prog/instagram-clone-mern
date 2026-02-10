@@ -7,7 +7,7 @@ function Sidebar() {
 
   const [logoUrl, setLogoUrl] = useState("");
   useEffect(()=>{
-    fetch('https://instagram-clone-mern-chi.vercel.app/api/logo')
+    fetch('/api/logo')
     .then(res=>res.json())
     .then(data=>setLogoUrl(data.logoUrl))
     .catch(err=>console.log(err));

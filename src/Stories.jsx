@@ -7,7 +7,7 @@ function Stories() {
    
 
    useEffect(()=>{
-    fetch('https://instagram-clone-mern-chi.vercel.app/stories')
+    fetch('/stories')
     .then((data)=>data.json())
     .then(data=>setStories(data))
     .catch(err=>console.log(err))

@@ -3,7 +3,7 @@ const app=express();
 
 const cors = require('cors');
 app.use(cors({
-  origin: "https://instagram-clone-mern-chi.vercel.app", 
+  origin: true, 
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 })); 

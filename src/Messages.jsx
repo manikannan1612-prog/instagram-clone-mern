@@ -6,7 +6,7 @@ function Messages() {
     const [messages ,setMessages] =useState([]);
 
 useEffect(()=>{
-    axios.get('https://instagram-clone-mern-chi.vercel.app/messages')
+    axios.get('/messages')
     .then(data=>setMessages(data.data))
     .catch(err=>console.log(err))
 },[])

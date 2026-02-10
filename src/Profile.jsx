@@ -12,11 +12,11 @@ function Profile() {
 
 
     useEffect(()=>{
-        axios.get('https://instagram-clone-mern-chi.vercel.app/profile')
+        axios.get('/profile')
         .then(data=>setProfile(data.data))
 
 
-        axios.get('https://instagram-clone-mern-chi.vercel.app/followers')
+        axios.get('/followers')
     .then(data=>setFollowers(data.data))
     .catch(err=>console.log(err))
 
@@ -34,13 +34,13 @@ function Profile() {
         }))
      }
      const handleUpdate=async ()=>{
-        axios.put('https://instagram-clone-mern-chi.vercel.app/profile',profile)
+        axios.put('/profile',profile)
         .then(alert("updated"))
         .catch(err=>console.log(err))
      }
 
      const handleUnfollow=async (_id)=>{
-        axios.delete(`https://instagram-clone-mern-chi.vercel.app/followers/${_id}`)
+        axios.delete(`/followers/${_id}`)
         .then(alert("unfollowed"))
         .then(setUnfollowed(!unfollowed))
         .catch(err=>console.log(err))

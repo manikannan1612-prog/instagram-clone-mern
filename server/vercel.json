@@ -1,9 +1,13 @@
 {
   "version": 2,
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "index.js"
-    }
+    { "source": "/api/(.*)", "destination": "/index.js" },
+    { "source": "/posts", "destination": "/index.js" },
+    { "source": "/Profile", "destination": "/index.js" },
+    { "source": "/followers", "destination": "/index.js" },
+    { "source": "/suggestions", "destination": "/index.js" },
+    { "source": "/stories", "destination": "/index.js" },
+    { "source": "/messages", "destination": "/index.js" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

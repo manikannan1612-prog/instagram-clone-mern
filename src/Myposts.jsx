@@ -9,7 +9,7 @@ function Myposts() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get('https://instagram-clone-mern-chi.vercel.app/posts')
+        axios.get('/posts')
             .then(res => setMyposts(res.data))
             .catch(err => console.log(err))
     }, [])
