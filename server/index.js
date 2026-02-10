@@ -2,19 +2,22 @@ const express = require("express");
 const app=express();
 
 const cors = require('cors');
-app.use(cors()); 
+app.use(cors({
+  origin: "https://instagram-clone-mern-chi.vercel.app", 
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+})); 
 app.use(express.json());
 const port=8000; 
 
 
 const mongoose = require('mongoose');
-const { timestampAdd } = require("firebase/firestore/pipelines");
 
 
+const mongoURI = process.env.MONGO_URI || "mongodb+srv://manikannan1612:58087745@instaclonecluster.0ztumsp.mongodb.net/instaclone";
 
-
-mongoose.connect("mongodb+srv://manikannan1612:58087745@instaclonecluster.0ztumsp.mongodb.net/instaclone?appName=Instaclonecluster")
-  .then(() => console.log("server is now connected to the Cloud Database."))
+mongoose.connect(mongoURI)
+  .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log("Connection failed:", err));
 
 app.get("/Users",(req,res)=>{
@@ -204,8 +207,14 @@ app.get('/messages',async(req,res)=>{
 
 
 
+app.get('/api/logo', (req, res) => {
+  res.json({ 
+    logoUrl: "https://res.cloudinary.com/dmx9kxose/image/upload/v1770206398/instagramlogonew1_prfy71.png" 
+  });
+});
 
 
-app.listen(port,(err)=>{
-    console.log(`app is ruuning on port${port}`);
+const PORT=process.env.PORT ||8000;
+app.listen(PORT,()=>{
+    console.log(`app is ruuning on port${PORT}`);
 });

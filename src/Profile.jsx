@@ -12,11 +12,11 @@ function Profile() {
 
 
     useEffect(()=>{
-        axios.get('http://localhost:8000/profile')
+        axios.get('https://instagram-clone-mern-chi.vercel.app/profile')
         .then(data=>setProfile(data.data))
 
 
-        axios.get('http://localhost:8000/followers')
+        axios.get('https://instagram-clone-mern-chi.vercel.app/followers')
     .then(data=>setFollowers(data.data))
     .catch(err=>console.log(err))
 
@@ -34,13 +34,13 @@ function Profile() {
         }))
      }
      const handleUpdate=async ()=>{
-        axios.put('http://localhost:8000/profile',profile)
+        axios.put('https://instagram-clone-mern-chi.vercel.app/profile',profile)
         .then(alert("updated"))
         .catch(err=>console.log(err))
      }
 
      const handleUnfollow=async (_id)=>{
-        axios.delete(`http://localhost:8000/followers/${_id}`)
+        axios.delete(`https://instagram-clone-mern-chi.vercel.app/followers/${_id}`)
         .then(alert("unfollowed"))
         .then(setUnfollowed(!unfollowed))
         .catch(err=>console.log(err))
@@ -73,13 +73,10 @@ function Profile() {
                 Update
 
             </button>
-
             
 
         
-        </div>
-
-        
+        </div>       
 
 
     ):(

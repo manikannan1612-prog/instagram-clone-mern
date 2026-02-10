@@ -20,7 +20,7 @@ function Newpost() {
     };
 
 
-    axios.post('http://localhost:8000/posts',finalData)
+    axios.post('https://instagram-clone-mern-chi.vercel.app/posts',finalData)
         .then(data=>setPostings(data.data))
         .catch(err=>console.log(err))
     

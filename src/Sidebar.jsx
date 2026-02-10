@@ -1,14 +1,34 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { data, useNavigate } from 'react-router-dom'
+import logo from '../assets/instagramlogonew1.png';
+
 
 
 function Sidebar() {
   const navigate=useNavigate();
+
+  const [logoUrl, setLogoUrl] = useState("");
+  useEffect(()=>{
+    fetch('https://instagram-clone-mern-chi.vercel.app/api/logo')
+    .then(res=>res.json())
+    .then(data=>setLogoUrl(data.logoUrl))
+    .catch(err=>console.log(err));
+  } ,[])
   return (
     <>
     <div className='position-fixed'>
     <div className='d-flex flex-column gap-3 m-3'>
-        <div ><img className= "logotext" src="src\assets\instagramlogonew1.png" alt="instagram" /></div>
+        <div >
+          {logoUrl?(
+          
+          <img className= "logotext" src={logoUrl} alt='instagram'></img>
+          ):(
+            
+            <span className='logotext'>instagram</span>
+        )
+          
+          } 
+          </div>
     <div onClick={()=>{ window.location.href = '/' }} 
   style={{ cursor: 'pointer' }}> <i className="bi bi-house-door"></i>Home</div>
     <div><i className="bi bi-search"></i>Search</div>

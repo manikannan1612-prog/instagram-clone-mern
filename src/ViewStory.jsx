@@ -11,7 +11,7 @@ function ViewStory() {
 
     
     useEffect(()=>{
-        fetch(`http://localhost:8000/stories`)
+        fetch(`https://instagram-clone-mern-chi.vercel.app/stories`)
         .then(data=>data.json())
         .then(data=>setStory(data))
         .catch(err=>console.log(err))
@@ -27,9 +27,9 @@ function ViewStory() {
     <div>   
 
         {currentStory?<div className='d-flex justify-content-center align-items-center'>
-            <Link to={`http://localhost:5173/story/${Number(id)-1}`}> <i className="bi bi-arrow-left-circle-fill"></i>   </Link>
+            <Link to={`/story/${Number(id)-1}`}> <i className="bi bi-arrow-left-circle-fill"></i>   </Link>
             <img className='vh-100' src={currentStory.image} alt="" />
-            <Link to={`http://localhost:5173/story/${Number(id)+1}`}> <i className="bi bi-arrow-right-circle-fill icon"></i>  </Link>
+            <Link to={`/story/${Number(id)+1}`}> <i className="bi bi-arrow-right-circle-fill icon"></i>  </Link>
         </div> : <div>loading </div>}
     </div>
     

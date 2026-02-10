@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 
+
 function Posts() {
   const [posts ,setPosts] =useState([]);
 
   useEffect(()=>{
-    fetch('http://localhost:8000/posts').
+    fetch('https://instagram-clone-mern-chi.vercel.app/posts').
     then((res)=>res.json()).
     then(data=>setPosts(data)).
     catch(err=>console.log(err))
