@@ -12,7 +12,7 @@ function Profile() {
 
 
     useEffect(()=>{
-        axios.get('/profile')
+        axios.get('/Profile')
         .then(data=>setProfile(data.data))
 
 
@@ -34,7 +34,7 @@ function Profile() {
         }))
      }
      const handleUpdate=async ()=>{
-        axios.put('/profile',profile)
+        axios.put('/Profile',profile)
         .then(alert("updated"))
         .catch(err=>console.log(err))
      }

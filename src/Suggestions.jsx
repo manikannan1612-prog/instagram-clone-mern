@@ -7,7 +7,7 @@ function Suggestions() {
   const [suggestions,setSuggestions]=useState([]);
 
 useEffect(()=>{
-  fetch('/profile')
+  fetch('/Profile')
   .then(data=>data.json())
   .then(data=>setProfile(data))
   .catch(err=>console.log(err))

@@ -20,7 +20,7 @@ function Newpost() {
     };
 
 
-    axios.post('/posts',finalData)
+    axios.post('/Posts',finalData)
         .then(data=>setPostings(data.data))
         .catch(err=>console.log(err))
     

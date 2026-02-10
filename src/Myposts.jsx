@@ -9,7 +9,7 @@ function Myposts() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get('/posts')
+        axios.get('/Posts')
             .then(res => setMyposts(res.data))
             .catch(err => console.log(err))
     }, [])
