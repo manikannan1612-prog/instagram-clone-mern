@@ -23,7 +23,7 @@ const router=createBrowserRouter(
 },
 {
   
-  path:'/profile',
+  path:'/Profile',
   element:<Profile/>
 
 },
@@ -36,13 +36,11 @@ path:'/myposts',
 element:<Myposts/>
 },
 {
-path:'newposts',
+path:'/newposts',
 element:<Newpost/>
 },
-{
-path:'myposts',
-element:<Myposts/>
-}
+
+
 
 ]
 
