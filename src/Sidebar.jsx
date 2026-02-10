@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react'
-import { data, useNavigate } from 'react-router-dom'
-import logo from '../assets/instagramlogonew1.png';
-
+import React, { useEffect,useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
 function Sidebar() {
