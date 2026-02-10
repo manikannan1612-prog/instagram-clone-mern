@@ -44,7 +44,7 @@ const postSchema = new mongoose.Schema({
 
 const Post = mongoose.model('Post', postSchema);
 
-app.get('/posts',async(req,res)=>{
+app.get('/Posts',async(req,res)=>{
   try{
   const allPosts=await Post.find();
   res.status(200).json(allPosts);
@@ -53,7 +53,7 @@ app.get('/posts',async(req,res)=>{
     res.status(500).json({message:"fetching posts",error:err})
   }
 });
-app.post('/posts',async(req,res)=>{
+app.post('/Posts',async(req,res)=>{
   try{
     const newpost= new Post({
      user: {
