@@ -8,6 +8,9 @@ app.use(cors({
   credentials: true
 })); 
 app.use(express.json());
+
+app.get("/", (req, res) => res.send("Server is LIVE"));
+
 const port=8000; 
 
 
@@ -222,4 +225,3 @@ app.listen(PORT,()=>{
 
 module.exports = app;
 
-// redeployement
