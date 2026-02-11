@@ -6,14 +6,10 @@
       "use": "@vercel/node"
     }
   ],
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/index.js" },
-    { "source": "/posts", "destination": "/index.js" },
-    { "source": "/Profile", "destination": "/index.js" },
-    { "source": "/suggestions", "destination": "/index.js" },
-    { "source": "/followers", "destination": "/index.js" },
-    { "source": "/messages", "destination": "/index.js" },
-    { "source": "/stories", "destination": "/index.js" },
-    { "source": "/(.*)", "destination": "/index.html" }
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "index.js"
+    }
   ]
 }
