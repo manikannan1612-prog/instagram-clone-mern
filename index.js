@@ -45,7 +45,7 @@ const postSchema = new mongoose.Schema({
 
 });
 
-const Post = mongoose.model('Post', postSchema);
+const Post = mongoose.model('Post', postSchema,'posts');
 
 app.get('/Posts',async(req,res)=>{
   try{
@@ -178,7 +178,7 @@ const storySchema=new mongoose.Schema({
   
 
 });
-const Story=mongoose.model('stories',storySchema);
+const Story=mongoose.model('stories',storySchema,'stories');
 app.get('/stories',async(req,res)=>{
   try{
     const allStories=await Story.find();

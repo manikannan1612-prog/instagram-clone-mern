@@ -5,7 +5,7 @@ function Posts() {
   const [posts ,setPosts] =useState([]);
 
   useEffect(()=>{
-    fetch('/Posts').
+    fetch('"https://instagram-clone-mern-3cy5qaj8x-manikannan1612-progs-projects.vercel.app/Posts').
     then((res)=>res.json()).
     then(data=>setPosts(data)).
     catch(err=>console.log(err))

@@ -11,7 +11,7 @@ function ViewStory() {
 
     
     useEffect(()=>{
-        fetch(`/stories`)
+        fetch(`"https://instagram-clone-mern-3cy5qaj8x-manikannan1612-progs-projects.vercel.app/stories`)
         .then(data=>data.json())
         .then(data=>setStory(data))
         .catch(err=>console.log(err))

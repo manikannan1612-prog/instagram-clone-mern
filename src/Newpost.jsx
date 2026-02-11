@@ -20,7 +20,7 @@ function Newpost() {
     };
 
 
-    axios.post('/Posts',finalData)
+    axios.post('"https://instagram-clone-mern-3cy5qaj8x-manikannan1612-progs-projects.vercel.app/Posts',finalData)
         .then(data=>setPostings(data.data))
         .catch(err=>console.log(err))
     

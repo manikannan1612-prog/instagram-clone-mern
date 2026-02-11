@@ -30,7 +30,7 @@ function Myposts() {
 
                                 <div className="p-3">
                                     <p> {mypost.caption}</p>
-                                    <button className="btn btn-primary w-100" onClick={() => navigate('/newposts')}>
+                                    <button className="btn btn-primary w-100" onClick={() => navigate('"https://instagram-clone-mern-3cy5qaj8x-manikannan1612-progs-projects.vercel.app/newposts')}>
                                         Add New Post
                                     </button>
                                 </div>
